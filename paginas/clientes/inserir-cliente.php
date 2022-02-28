@@ -1,16 +1,16 @@
 <header>
-    <h3>Inserir Cliente</h3>
+    <!-- <h3>Inserir Cliente</h3> -->
 </header>
 <?php
-    //recebendo dados cad-clientes
-    $nomeCliente = mysqli_real_escape_string($conexao, $_POST["nomeCliente"]);
-    $dataNasc = mysqli_real_escape_string($conexao, $_POST["dataNasc"]);
-    $sexoCliente = mysqli_real_escape_string($conexao, $_POST["sexoCliente"]);
-    $contatoCliente = mysqli_real_escape_string($conexao, $_POST["contatoCliente"]);
-    $profissaoCliente = mysqli_real_escape_string($conexao, $_POST["profissaoCliente"]);
-    $emailCliente = mysqli_real_escape_string($conexao, $_POST["emailCliente"]);
+//recebendo dados cad-clientes
+$nomeCliente = mysqli_real_escape_string($conexao, $_POST["nomeCliente"]);
+$dataNasc = mysqli_real_escape_string($conexao, $_POST["dataNasc"]);
+$sexoCliente = mysqli_real_escape_string($conexao, $_POST["sexoCliente"]);
+$contatoCliente = mysqli_real_escape_string($conexao, $_POST["contatoCliente"]);
+$profissaoCliente = mysqli_real_escape_string($conexao, $_POST["profissaoCliente"]);
+$emailCliente = mysqli_real_escape_string($conexao, $_POST["emailCliente"]);
 
-    $sql_ins = "INSERT INTO clientes (
+$sql_ins = "INSERT INTO clientes (
         dataCad,
         nomeCliente, 
         dataNasc, 
@@ -29,7 +29,10 @@
         )
         ";
 
-        mysqli_query($conexao, $sql_ins) or die("Erro ao realizar o cadastro. " . mysqli_error($conexao));
+mysqli_query($conexao, $sql_ins) or die("Erro ao realizar o cadastro. " . mysqli_error($conexao));
 
-        echo "Cliente cadastrado com sucesso!";
+echo "Cliente cadastrado com sucesso!";
 ?>
+<div class="text-center">
+    <a class="btn btn-primary" href="index.php?menuop=clientes">Voltar a lista</a>
+</div>

@@ -1,5 +1,5 @@
 <header>
-    <h3>Atualizar Cliente</h3>
+    <!-- <h3>Atualizar Cliente</h3> -->
 </header>
 <?php
     //recebendo dados editar-cliente
@@ -25,3 +25,7 @@
 
         echo "Cliente atualizado com sucesso!";
 ?>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="index.php?menuop=clientes">Voltar a lista</a>
+</div>
