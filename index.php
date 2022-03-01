@@ -39,50 +39,55 @@ include("db/conexao.php");
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Ficha de Anamnese</a>
                 </li>
+                <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-warning btn-sm text-light mt-1" href="index.php?menuop=logout">SAIR</a>
+                    </li>
+                </ul>
             </ul>
         </div>
     </header>
     <main>
-    <div class="container">
-        <?php
-        //Menu do cabeçalho
-        $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "hoome";
-        switch ($menuop) {
-            case 'home':
-                include("paginas/home/home.php");
-                break;
-            case 'clientes':
-                include("paginas/clientes/clientes.php");
-                break;
-            case 'cad-cliente':
-                include("paginas/clientes/cad-cliente.php");
-                break;
-            case 'inserir-cliente':
-                include("paginas/clientes/inserir-cliente.php");
-                break;
-            case 'editar-cliente':
-                include("paginas/clientes/editar-cliente.php");
-                break;
-            case 'atualizar-cliente':
-                include("paginas/clientes/atualizar-cliente.php");
-                break;
-            case 'excluir-cliente':
-                include("paginas/clientes/excluir-cliente.php");
-                break;
-            case 'agenda':
-                include("paginas/agenda/agenda.php");
-                break;
-            case 'financeiro':
-                include("paginas/financeiro/financeiro.php");
-                break;
+        <div class="container">
+            <?php
+            //Menu do cabeçalho
+            $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "hoome";
+            switch ($menuop) {
+                case 'home':
+                    include("paginas/home/home.php");
+                    break;
+                case 'clientes':
+                    include("paginas/clientes/clientes.php");
+                    break;
+                case 'cad-cliente':
+                    include("paginas/clientes/cad-cliente.php");
+                    break;
+                case 'inserir-cliente':
+                    include("paginas/clientes/inserir-cliente.php");
+                    break;
+                case 'editar-cliente':
+                    include("paginas/clientes/editar-cliente.php");
+                    break;
+                case 'atualizar-cliente':
+                    include("paginas/clientes/atualizar-cliente.php");
+                    break;
+                case 'excluir-cliente':
+                    include("paginas/clientes/excluir-cliente.php");
+                    break;
+                case 'agenda':
+                    include("paginas/agenda/agenda.php");
+                    break;
+                case 'financeiro':
+                    include("paginas/financeiro/financeiro.php");
+                    break;
 
-            default:
-                include("paginas/home/home.php");
-                break;
-        }
-        ?>
+                default:
+                    include("paginas/home/home.php");
+                    break;
+            }
+            ?>
     </main>
-    
+
     <footer class="container-fluid fixed-bottom bg-dark">
         <div class="text-center">Gata Dourada 1.0</div>
     </footer>
@@ -91,6 +96,7 @@ include("db/conexao.php");
     <!-- jQuery e Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="js/validation.js"></script>
 </body>
 
 </html>

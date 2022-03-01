@@ -1,11 +1,11 @@
 <header>
-    <div class="text-center">
+    <div class="text-center mt-3">
         <h3><img src="img/person.svg">Clientes</h3>
     </div>
 </header>
 <div>
     <!-- Botão novo cliente -->
-    <a class="btn btn-sm btn-outline-secondary mb-2" href="index.php?menuop=cad-cliente"> <img src="img/person-add.svg">Novo Cliente</a>
+    <a class="btn btn-sm btn-outline-secondary mb-2" href="index.php?menuop=cad-cliente"> <img src="img/person_add.svg">Novo Cliente</a>
 </div>
 <div>
     <!-- Caixa de pesquisa (filtro) -->
@@ -15,7 +15,6 @@
             <button class="btn btn-outline-success btn-sm" type="submit"><img src="img/search.svg">Pesquisar</button>
         </div>
     </form>
-
 </div>
 <div class="tabela">
     <!-- Lista de cliente -->
