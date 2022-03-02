@@ -1,7 +1,7 @@
 <?php
 	include("conexao/bd.php"); 
 	session_start();
-	define("raiz","/gadadourada/");
+	define("raiz","/gatadourada/");
 	//define("raiz","/agendaclientes/");
 ?>
 <!DOCTYPE html>
