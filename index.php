@@ -1,102 +1,133 @@
 <?php
-//Incluindo arquivo de conexã ao banco 
-include("db/conexao.php");
+	include("conexao/bd.php"); 
+	session_start();
+	define("raiz","/gadadourada/");
+	//define("raiz","/agendaclientes/");
 ?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Titulo" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>&Aacute;rea restrita</title>
+		<link rel="stylesheet" href="<?php echo raiz ?>bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="<?php echo raiz ?>bootstrap/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="<?php echo raiz ?>media/css/style.css">
+		<link rel="stylesheet" href="<?php echo raiz ?>media/css/lateral.css">
+		<link rel="stylesheet" href="<?php echo raiz ?>media/css/jquery.autocomplete.css">
+		<!-- <link rel="icon" type="image/ico" href="<?php echo raiz ?>media/imagens/LOGO.ico" />  -->
+		<link rel="stylesheet" href="<?php echo raiz ?>font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<?php echo raiz ?>media/css/jquery-ui-1.10.1.custom.css">
+		<link rel="stylesheet" href="<?php echo raiz ?>media/css/fullcalendar.css">
+	</head>
+	<body style="background: none">
+		<script type="text/javascript" src="<?php echo raiz ?>media/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="<?php echo raiz ?>media/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="<?php echo raiz ?>media/js/fullcalendar.min.js"></script>
+		<script type="text/javascript" src="<?php echo raiz ?>media/js/jquery.maskedinput.js"></script>
 
-    <!-- Carregar estilo padrao css -->
-    <link rel="stylesheet" href="css/estilo-padrao.css">
-    <title>Gata Dourada 1.0</title>
+		<script type='text/javascript'> 
+			$(function(){
+				$('#agenda').fullCalendar({
 
-</head>
+					defaultView: 'month',
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
 
-<body>
-    <header class="bg-dark">
-        <div class="container">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?menuop=home">INÍCIO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?menuop=clientes">CLIENTES</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?menuop=agenda">AGENDA</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?menuop=financeiro">FINANCEIRO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Ficha de Anamnese</a>
-                </li>
-                <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                    <li class="nav-item">
-                        <a class="btn btn-outline-warning btn-sm text-light mt-1" href="index.php?menuop=logout">SAIR</a>
-                    </li>
-                </ul>
-            </ul>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            <?php
-            //Menu do cabeçalho
-            $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "hoome";
-            switch ($menuop) {
-                case 'home':
-                    include("paginas/home/home.php");
-                    break;
-                case 'clientes':
-                    include("paginas/clientes/clientes.php");
-                    break;
-                case 'cad-cliente':
-                    include("paginas/clientes/cad-cliente.php");
-                    break;
-                case 'inserir-cliente':
-                    include("paginas/clientes/inserir-cliente.php");
-                    break;
-                case 'editar-cliente':
-                    include("paginas/clientes/editar-cliente.php");
-                    break;
-                case 'atualizar-cliente':
-                    include("paginas/clientes/atualizar-cliente.php");
-                    break;
-                case 'excluir-cliente':
-                    include("paginas/clientes/excluir-cliente.php");
-                    break;
-                case 'agenda':
-                    include("paginas/agenda/agenda.php");
-                    break;
-                case 'financeiro':
-                    include("paginas/financeiro/financeiro.php");
-                    break;
+					},
+					//editable: true,
 
-                default:
-                    include("paginas/home/home.php");
-                    break;
-            }
-            ?>
-    </main>
+					events: "<?php echo raiz ?>conexao/events.php"
+				});
+			});
 
-    <footer class="container-fluid fixed-bottom bg-dark">
-        <div class="text-center">Gata Dourada 1.0</div>
-    </footer>
+		</script>
+		<script type='text/javascript'> 
+			$(function(){
+				$('#calendario').fullCalendar({
+
+					defaultView: 'agendaDay',
+					
+					//editable: true,
+
+					events: "<?php echo raiz ?>conexao/events.php"
+				});
+			});
+
+		</script>
+		<script>
+			$(document).ready(function(){
+			$(".date").datepicker({
+			    dateFormat: 'dd/mm/yy',
+			    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+			    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+			    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			    nextText: 'Próximo',
+			    prevText: 'Anterior'
+			});
+			});
+		</script>
+		<script>
+		jQuery(function($){
+		   $(".data").mask("99/99/9999");
+		   $(".cep").mask("99999-999");
+		   //$(".telefone").mask("(99)9999-9999");
+		   $(".hora").mask("99:99");
+		   $(".cpf").mask("999.999.999-99");
+		   $(".estado").mask("99");
+		   $(".cnpj").mask("99.999.999/9999-99");
+		});
+		</script>
+		<script type='text/javascript'>//<![CDATA[ 
+			$(function(){
+			var maskBehavior = function (val) {
+			  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+			},
+			options = {onKeyPress: function(val, e, field, options) {
+			        field.mask(maskBehavior.apply({}, arguments), options);
+			    }
+			};
+
+			$('.telefone').mask(maskBehavior, options);
+			});//]]>  
+
+		</script>
 
 
-    <!-- jQuery e Popper -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="js/validation.js"></script>
-</body>
+		
+  		<script src="<?php echo raiz ?>bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo raiz ?>bootstrap/js/bootstrap.js"></script>
+		
+		<?php include("lateral.php"); ?>
+					<div id="conteudo" class="col-md-12">
+						
+						<?php
+							
+							
+							$atual = (isset($_GET['pag'])) ? $_GET['pag'] : 'home';
+							$permissao = array('home','clientes','404','agenda','financeiro');
+							$pasta = 'paginas';
+							if(substr_count($atual, '/')>0){
+								$atual = explode('/', $atual);
+								$pagina = (file_exists("{$pasta}/".$atual[0].'.php') && in_array($atual[0], $permissao)) ? $atual[0] : '404';
+								require("{$pasta}/{$atual[0]}/{$atual[1]}.php");
+							}else{
+								$pagina = (file_exists("{$pasta}/".$atual.'.php') && in_array($atual, $permissao)) ? $atual : '404';
+								require("{$pasta}/{$pagina}.php");
+							}
 
+		
+						?>
+					</div>
+
+				
+					
+		
+	</body>
 </html>
