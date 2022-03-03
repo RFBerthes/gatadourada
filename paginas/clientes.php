@@ -32,11 +32,8 @@
 	</div>
 	<table>
 		<tr class="titulo">
-		
 			<td><label>Nome</label></td>
-			<td><label>Email</label></td>
 			<td><label>Telefone</label></td>
-			
 			<td><label>Op&ccedil;&otilde;es</label></td>
 		</tr>
 		<?php
@@ -44,13 +41,13 @@
 			
 			$nome_busca = $_POST["nome"];
 
-			$query = "select * from clientes where `nome` like '%$nome_busca%' order by id desc";
+			$query = "SELECT * FROM `clientes` WHERE `nome` LIKE '%$nome_busca%' ORDER BY `nome` ASC";
 			$result = $mysqli->query($query);
 				
 		}	
 		else{
 		
-			$query = "select * from clientes order by id desc";
+			$query = "SELECT * FROM `clientes` ORDER BY `nome` ASC";
 			$result = $mysqli->query($query);
 			
 		}
@@ -58,16 +55,14 @@
 		$num_results = $result->num_rows;
 		if($num_results > 0){
 			while ($row = $result->fetch_assoc()) {
-				$id = $row['id'];
+				$id = $row['idCliente'];
 				$nome = $row['nome'];
-				$email = $row['email'];
-				$telefone = $row['telefone_cel'];
+				$numero = $row['numero'];
 			
 		?>
 		<tr class="dados">
 			<td><?php echo $nome; ?></td>
-			<td><?php if(!empty($email)){ echo "$email";} else{ echo "Dado n&atilde;o informado";} ?></td>
-			<td><?php if(!empty($telefone)){ echo "$telefone"; } else{ echo "Dado n&atilde;o informado";} ?></td>
+			<td><?php if(!empty($numero)){ echo "$numero"; } else{ echo "Dado n&atilde;o informado";} ?></td>
 			<td>
 				<a href="clientes/editar/<?php echo $id; ?>">
 				  	<i class="fa fa-pencil-square-o"></i>	

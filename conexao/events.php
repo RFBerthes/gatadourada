@@ -3,12 +3,12 @@
  $json = array();
 
  // Query that retrieves events
- $requete = "SELECT * FROM agenda ORDER BY id";
+ $requete = "SELECT * FROM agenda ORDER BY idAgendamento";
 
  // connection to the database
  try {
  //$bdd = new PDO('mysql:host=localhost;dbname=agendaclientes', 'root', 'JgNJTS97SKct5MsN');
- $bdd = new PDO('mysql:host=localhost;dbname=agendaclientes', 'root', '');
+ $bdd = new PDO('mysql:host=localhost;dbname=gatadourada', 'root', '');
  } catch(Exception $e) {
   exit('Unable to connect to database.');
  }

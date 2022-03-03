@@ -1,7 +1,5 @@
 <div class="col-md-12">
 	<div class="col-md-10 titulo">Saldo</div>
-	
-	
 </div>
 
 <div id="lista" class="col-md-12" style="margin-bottom:30px;">
@@ -136,3 +134,10 @@
 		</tr>
 	</table>
 </div>
+
+
+<?php
+//Incluindo serviçoes e adicionais
+include("financeiro/servicos.php");
+include("financeiro/adicionais.php");
+?>

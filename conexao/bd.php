@@ -4,7 +4,7 @@
 	$servidor = 'localhost';
 	$usuario = 'root';
 	$senha = '';
-	$banco = 'agendaclientes';
+	$banco = 'gatadourada';
 	
 
 	// Conecta-se ao banco de dados MySQL
