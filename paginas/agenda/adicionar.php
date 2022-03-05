@@ -4,19 +4,17 @@
 		<form name="form1" action="<?php echo raiz ?>servicosbd/adicionaragenda.php" method="POST">
 			<div class="row">
 				<div class="col-md-6 item">
-					<div class="texto">
-						Cliente:
-					</div>
+					<div class="texto">Cliente:</div>
 					<select name="idCliente" id="" required>
 						<option value="">Escolha o cliente</option>
 						<?php
-						$query = "SELECT `idCliente`,`nome` FROM `clientes` ORDER BY nome ASC";
+						$query = "SELECT `idCliente`,`nomeCliente` FROM `clientes` ORDER BY nomeCliente ASC";
 						$result = $mysqli->query($query);
 						$num_results = $result->num_rows;
 						if ($num_results > 0) {
 							while ($row = $result->fetch_assoc()) {
 								$id_cliente = $row['idCliente'];
-								$nome_cliente = $row['nome'];
+								$nome_cliente = $row['nomeCliente'];
 								if (!empty($nome_cliente)) {
 						?>
 									<option value="<?php echo $id_cliente; ?>"><?php echo $nome_cliente; ?></option>
@@ -92,15 +90,11 @@
 					<?php } ?>
 				</div>
 				<div class="col-md-2">
-					<div class="texto">
-						Obs.:
-					</div>
+					<div class="texto">Obs.:</div>
 					<input type="text" name="observacao" placeholder="Informe detalhes">
 				</div>
 				<div class="col-md-6">
-					<div class="texto">
-						Forma de pagamento:
-					</div>
+					<div class="texto">Forma de pagamento:</div>
 					<select name="forma_pagamento" id="forma_pagamento">
 						<option value="avista">À vista</option>
 						<option value="cartao_credito">Cart&atilde;o de cr&eacute;dito</option>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Mar-2022 às 11:37
+-- Tempo de geração: 05-Mar-2022 às 07:22
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -70,7 +70,7 @@ CREATE TABLE `agenda` (
 
 INSERT INTO `agenda` (`idAgendamento`, `title`, `start`, `end`, `url`, `allDay`, `status`, `color`, `observacao`, `valor`, `forma_pagamento`, `clientes_id`, `servicos_idServico`, `adicionais_idAdicionais`) VALUES
 (24, 'oi', '2022-03-03 09:07:49', '2022-03-03 09:07:49', '', '', 0, '', '', 0, '', 2, 10, 3),
-(39, 'Rafael', '2022-03-04 13:30:00', '2022-03-04 15:00:00', 'agenda/editar/39', '', 1, '', '', 215, 'cartao_credito', 2, 10, 2),
+(39, 'Rafael', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'agenda/editar/39', '', 1, '', 'foi', 0, 'cartao_debito', 2, 12, 2),
 (40, 'Rafael', '2022-03-11 11:00:00', '2022-03-11 12:00:00', 'agenda/editar/40', '', 1, '', 'OK', 90, 'avista', 2, 9, 2);
 
 -- --------------------------------------------------------
@@ -81,7 +81,7 @@ INSERT INTO `agenda` (`idAgendamento`, `title`, `start`, `end`, `url`, `allDay`,
 
 CREATE TABLE `clientes` (
   `idCliente` int(11) NOT NULL,
-  `nome` varchar(45) NOT NULL,
+  `nomeCliente` varchar(45) NOT NULL,
   `dataNasc` date DEFAULT NULL,
   `idade` int(11) DEFAULT NULL,
   `dataAlt` timestamp NULL DEFAULT current_timestamp(),
@@ -118,7 +118,7 @@ CREATE TABLE `clientes` (
 -- Extraindo dados da tabela `clientes`
 --
 
-INSERT INTO `clientes` (`idCliente`, `nome`, `dataNasc`, `idade`, `dataAlt`, `genero`, `numero`, `email`, `profissao`, `fototipo`, `bronzeAntes`, `pele`, `respiratorio`, `respiratorioDesc`, `hipertensao`, `degenerativa`, `alergia`, `alergiaDesc`, `ferimentoTatuagem`, `ferimentoTatuagemDesc`, `hematoma`, `hematomaDesc`, `medicacao`, `medicacaoDesc`, `transpiracao`, `transpiraçãoDesc`, `depilacao`, `depilacaoDesc`, `vitiligo`, `vitiligoDesc`, `psoriase`, `autorizacao`) VALUES
+INSERT INTO `clientes` (`idCliente`, `nomeCliente`, `dataNasc`, `idade`, `dataAlt`, `genero`, `numero`, `email`, `profissao`, `fototipo`, `bronzeAntes`, `pele`, `respiratorio`, `respiratorioDesc`, `hipertensao`, `degenerativa`, `alergia`, `alergiaDesc`, `ferimentoTatuagem`, `ferimentoTatuagemDesc`, `hematoma`, `hematomaDesc`, `medicacao`, `medicacaoDesc`, `transpiracao`, `transpiraçãoDesc`, `depilacao`, `depilacaoDesc`, `vitiligo`, `vitiligoDesc`, `psoriase`, `autorizacao`) VALUES
 (2, 'Rafael', '2022-03-16', 21, '2022-03-03 05:24:43', '', '985338955', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------

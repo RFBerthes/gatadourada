@@ -1,32 +1,22 @@
 <?php
 	
 	include("../conexao/bd.php");
-	$id = $_POST['idaltera'];
-	$nome_cliente = $_POST["nome_cliente"];
-	$query_clientes = "select * from `clientes` where `nome` like '$nome_cliente' ";
-	$resultado_clientes = $mysqli->query($query_clientes);
-	$row_clientes = $resultado_clientes->fetch_assoc();
-	$id_cliente = $row_clientes["id"];
+	$idAltera = $_POST['idaltera'];
+	$nome_cliente = $_POST["nomeCliente"];
+	$id_cliente = $_POST["idCliente"];
+
 
 	$start = $_POST["dt_inicio"];
 	$end = $_POST["dt_fim"];
 	$hr_inicio = $_POST["hr_inicio"];
 	$hr_fim = $_POST["hr_fim"];
-	$procedimento = $_POST["procedimento"];
+	$id_servico = $_POST["servico"];
+	$id_adicional = $_POST["adicional"];
+	$observacao = $_POST["observacao"];
 	$status=1;
-
 	$valor = $_POST["valor"];
 	$forma_pagamento = $_POST["forma_pagamento"];
-	$tipo_evento = $_POST["tipo_evento"];
-	if($tipo_evento == "Cirurgia"){
-		$color = "green";
-	}
-	if($tipo_evento=="Retorno"){
-		$color = "gray";
-	}
-	if($tipo_evento=="Consulta"){
-		$color = "#337ab7";
-	}
+
 
 	//usa explode pra explodir o que tem na variavel
 	$dt_inicio = explode("/", $start);
@@ -42,8 +32,18 @@
 	$hr_fim = "$hr_fim".":00";
 	$end = "$ano"."-"."$mes"."-"."$dia"." "."$hr_fim";
 
+	$query = "UPDATE `agenda` SET 
+	`title` = '$nome_cliente', 
+	`start` = '$start', 
+	`end` = '$end', 
+	`status` = '$status'
+	`observacao` = '$observacao', 
+	`valor` = '$valor', 
+	`forma_pagamento` = '$forma_pagamento', 
+	`servicos_idServico` = '$id_servico', 
+	`adicionais_idAdicionais` = '$id_adicional' 
+	WHERE `agenda`.`idAgendamento` = '$idAltera'";
 
-	$query = "update `agenda` set `title`='$nome_cliente',`start`='$start',`end`='$end', `color`='$color', `status`='$status', `procedimento`='$procedimento', `id_cliente`='$id_cliente', `valor`='$valor', `forma_pagamento`='$forma_pagamento', `tipo_evento`='$tipo_evento' where `id`='$id'";
 
 	if($mysqli->query($query)){
 		echo "Atualizou";
@@ -52,4 +52,3 @@
 	}
 	mysqli_close($mysqli);
 	header ("location: ../agenda");
-?>

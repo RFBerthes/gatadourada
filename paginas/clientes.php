@@ -56,7 +56,7 @@
 		if($num_results > 0){
 			while ($row = $result->fetch_assoc()) {
 				$id = $row['idCliente'];
-				$nome = $row['nome'];
+				$nome = $row['nomeCliente'];
 				$numero = $row['numero'];
 			
 		?>

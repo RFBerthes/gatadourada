@@ -9,7 +9,7 @@
 	
 	$result = $mysqli->query($query);
 	$row = $result->fetch_assoc();
-	$nome = $row["nome"];
+	$nome = $row["nomeCliente"];
 	$email = $row["email"];
 	$telefone_residencial = $row["telefone_res"];
 	$telefone_celular = $row["telefone_cel"];

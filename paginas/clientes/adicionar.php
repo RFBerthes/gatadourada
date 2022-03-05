@@ -4,11 +4,11 @@
 		<form action="<?php echo raiz ?>servicosbd/adicionarclientes.php" method="POST">
 			<div class="col-md-6 item">
 				<div class="texto">Nome:*</div>
-				<input type="text" name="nome" placeholder="Nome Completo" required>
+				<input type="text" name="nomeCliente" placeholder="Nome Completo" required>
 			</div>
 			<div class="col-md-6 item">
 				<div class="texto">Telefone Celular:*</div>
-				<input type="text" class="telefone" name="telefone_celular" placeholder="(__)_____-____" maxlength="15" required>
+				<input type="text" class="telefone" name="numero" placeholder="(__)_____-____" maxlength="15" required>
 			</div>
 			<div class="col-md-6 item">
 				<div class="texto">Email:</div>
@@ -16,7 +16,7 @@
 			</div>
 			<div class="col-md-6 item">
 				<div class="texto">Data de Nascimento:</div>
-				<input type="text" class="date data" name="dt_nascimento" placeholder="__/__/____">
+				<input type="text" class="date data" name="dataNasc" placeholder="__/__/____">
 			</div>
 			<div class="col-md-12">
 			</div>
@@ -24,7 +24,7 @@
 			<div id="adicionar">
 				<div class="col-md-3 item">
 					<div class="texto">Gênero:</div>
-					<select class="genero" name="sexoCliente">
+					<select class="genero" name="genero">
 						<option selected value="">Selecione o gênero</option>
 						<option value="F">Feminino</option>
 						<option value="M">Masulino</option>
@@ -59,7 +59,7 @@
 				</div>
 				<div class="col-md-3 item">
 					<div class="texto">Já fes esse tipo de bronzeamento antes:</div>
-					<select class="bronzeantes" name="pele">
+					<select class="bronzeantes" name="bronzeAntes">
 						<option selected value="">Escolha a opção</option>
 						<option value="1">Sim</option>
 						<option value="0">Não</option>
