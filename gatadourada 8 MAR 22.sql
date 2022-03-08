@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Mar-2022 às 07:22
+-- Tempo de geração: 08-Mar-2022 às 12:48
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -69,9 +69,9 @@ CREATE TABLE `agenda` (
 --
 
 INSERT INTO `agenda` (`idAgendamento`, `title`, `start`, `end`, `url`, `allDay`, `status`, `color`, `observacao`, `valor`, `forma_pagamento`, `clientes_id`, `servicos_idServico`, `adicionais_idAdicionais`) VALUES
-(24, 'oi', '2022-03-03 09:07:49', '2022-03-03 09:07:49', '', '', 0, '', '', 0, '', 2, 10, 3),
-(39, 'Rafael', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'agenda/editar/39', '', 1, '', 'foi', 0, 'cartao_debito', 2, 12, 2),
-(40, 'Rafael', '2022-03-11 11:00:00', '2022-03-11 12:00:00', 'agenda/editar/40', '', 1, '', 'OK', 90, 'avista', 2, 9, 2);
+(40, 'Rafael', '2022-03-11 11:00:00', '2022-03-11 12:00:00', 'agenda/editar/40', '', 1, '', 'OK', 90, 'avista', 2, 9, 2),
+(43, 'Rodimara', '2022-03-12 14:00:00', '2022-03-12 18:00:00', 'agenda/editar/43', '', 1, '', 'pago', 165, 'cartao_credito', 4, 6, 2),
+(44, 'Rodimara', '2022-03-14 14:00:00', '2022-03-14 15:00:00', 'agenda/editar/44', '', 1, '', 'ok', 145, 'cartao_credito', 4, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,7 @@ CREATE TABLE `clientes` (
   `medicacao` tinyint(4) DEFAULT NULL,
   `medicacaoDesc` varchar(45) DEFAULT NULL,
   `transpiracao` tinyint(4) DEFAULT NULL,
-  `transpiraçãoDesc` varchar(45) DEFAULT NULL,
+  `transpiracaoDesc` varchar(45) DEFAULT NULL,
   `depilacao` tinyint(4) DEFAULT NULL,
   `depilacaoDesc` int(11) DEFAULT NULL,
   `vitiligo` tinyint(4) DEFAULT NULL,
@@ -118,8 +118,9 @@ CREATE TABLE `clientes` (
 -- Extraindo dados da tabela `clientes`
 --
 
-INSERT INTO `clientes` (`idCliente`, `nomeCliente`, `dataNasc`, `idade`, `dataAlt`, `genero`, `numero`, `email`, `profissao`, `fototipo`, `bronzeAntes`, `pele`, `respiratorio`, `respiratorioDesc`, `hipertensao`, `degenerativa`, `alergia`, `alergiaDesc`, `ferimentoTatuagem`, `ferimentoTatuagemDesc`, `hematoma`, `hematomaDesc`, `medicacao`, `medicacaoDesc`, `transpiracao`, `transpiraçãoDesc`, `depilacao`, `depilacaoDesc`, `vitiligo`, `vitiligoDesc`, `psoriase`, `autorizacao`) VALUES
-(2, 'Rafael', '2022-03-16', 21, '2022-03-03 05:24:43', '', '985338955', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `clientes` (`idCliente`, `nomeCliente`, `dataNasc`, `idade`, `dataAlt`, `genero`, `numero`, `email`, `profissao`, `fototipo`, `bronzeAntes`, `pele`, `respiratorio`, `respiratorioDesc`, `hipertensao`, `degenerativa`, `alergia`, `alergiaDesc`, `ferimentoTatuagem`, `ferimentoTatuagemDesc`, `hematoma`, `hematomaDesc`, `medicacao`, `medicacaoDesc`, `transpiracao`, `transpiracaoDesc`, `depilacao`, `depilacaoDesc`, `vitiligo`, `vitiligoDesc`, `psoriase`, `autorizacao`) VALUES
+(2, 'Rafael', '2022-03-16', 21, '2022-03-03 05:24:43', '', '985338955', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Rodimara', '2021-11-15', 0, '2022-03-08 05:35:11', 'F', '(51) 89784-654', 'rodi@hotmail.com', '', '', 0, '', 0, '', 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, 0, 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -210,13 +211,13 @@ ALTER TABLE `adicionais`
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `idAgendamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idAgendamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `servicos`
