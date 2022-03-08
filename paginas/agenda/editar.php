@@ -100,15 +100,15 @@
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Data:</div>
-				<input type="text" class="date" required name="start" placeholder="<?php echo $start; ?>">
+				<input type="text" class="date" required name="start" placeholder="__/__/____" value="<?php echo $start; ?>">
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Hora In&iacute;cio:</div>
-				<input type="text" class="hora" required name="hr_inicio" placeholder="<?php echo $hr_inicio; ?>">
+				<input type="text" class="hora" required name="hr_inicio" placeholder="__:__" value="<?php echo $hr_inicio; ?>">
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Hora Fim:</div>
-				<input type="text" class="hora" required name="hr_fim" placeholder="<?php echo $hr_fim; ?>">
+				<input type="text" class="hora" required name="hr_fim" placeholder="__:__" value="<?php echo $hr_fim; ?>">
 			</div>
 		</div>
 		<div class="row">
