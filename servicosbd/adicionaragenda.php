@@ -2,22 +2,19 @@
 	
 	include("../conexao/bd.php");
 
-	$id_cliente = $_POST["idCliente"];
-	echo $id_cliente; 
+	$idCliente = $_POST["idCliente"];
 
 	//Recupera nome cliente para inserir como título
-	$query_cliente = "SELECT `nome` FROM `clientes` WHERE `idCliente` = '$id_cliente' ";
+	$query_cliente = "SELECT `nomeCliente` FROM `clientes` WHERE `idCliente` = '$idCliente' ";
 	$resultado_cliente = $mysqli->query($query_cliente);
 	$row = $resultado_cliente->fetch_assoc();
-	$nome_cliente = $row["nome"];
+	$nome_cliente = $row["nomeCliente"];
 
 	$observacao = $_POST["observacao"];
 	$servico = $_POST["servico"];
 	$adicional = $_POST["adicional"];
 	$forma_pagamento = $_POST["forma_pagamento"];
-	
-	echo $servico; 
-	echo $adicional;
+
 	//Data
 	$start = $_POST["start"];
 	$hr_inicio = $_POST["hr_inicio"];
@@ -62,19 +59,10 @@
 	'$observacao', 
 	'', 
 	'$forma_pagamento', 
-	'$id_cliente', 
+	'$idCliente', 
 	'$servico', 
 	'$adicional');";
 
-
-	echo $servico; 
-	echo $adicional;
-	echo $nome_cliente; 
-	echo $forma_pagamento; 
-	echo $end; 
-	echo $forma_pagamento; 
-	echo $hr_inicio; 
-	echo $hr_fim; 
 	if($mysqli->query($query)){
 
 		$ultimo_id = mysqli_insert_id($mysqli);

@@ -41,13 +41,13 @@
 			
 			$nome_busca = $_POST["nome"];
 
-			$query = "SELECT * FROM `clientes` WHERE `nome` LIKE '%$nome_busca%' ORDER BY `nome` ASC";
+			$query = "SELECT * FROM `clientes` WHERE `nomeCliente` LIKE '%$nome_busca%' ORDER BY `nomeCliente` ASC";
 			$result = $mysqli->query($query);
 				
 		}	
 		else{
 		
-			$query = "SELECT * FROM `clientes` ORDER BY `nome` ASC";
+			$query = "SELECT * FROM `clientes` ORDER BY `nomeCliente` ASC";
 			$result = $mysqli->query($query);
 			
 		}

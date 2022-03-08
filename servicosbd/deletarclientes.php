@@ -1,12 +1,12 @@
 <?php
 	
 	include("../conexao/bd.php");
-	$id = $_GET['valorid'];
+	$idCliente = $_GET['valorid'];
 	
-	$query = "delete from `clientes` where `id`='$id'";
+	$query = "delete from `clientes` where `idCliente`='$idCliente'";
 
 	if($mysqli->query($query)){
-		echo "Atualizou";
+		echo "Deletou";
 	}else{
 		echo "Erro";
 	}

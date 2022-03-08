@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="<?php echo raiz ?>font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo raiz ?>media/css/jquery-ui-1.10.1.custom.css">
 		<link rel="stylesheet" href="<?php echo raiz ?>media/css/fullcalendar.css">
+		<title>Gata Dourada 1.0</title>
 	</head>
 	<body style="background: none">
 		<script type="text/javascript" src="<?php echo raiz ?>media/js/jquery-1.11.2.js"></script>

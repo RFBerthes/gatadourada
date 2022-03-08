@@ -2,16 +2,28 @@
 	
 	include("../conexao/bd.php");
 
-	$dataNasc0 = $_POST["dataNasc"];
 
+	$dataNasc0 = $_POST["dataNasc"];
+	//explode DataNasc
 	$dataNasc2 = explode("/", $dataNasc0);
 	$ano = $dataNasc2[2];
 	$mes = $dataNasc2[1];
 	$dia = $dataNasc2[0];
 	$dataNasc = "$ano"."-"."$mes"."-"."$dia";
 
+	//data atual
+	$anoAtual   = date("Y");
+    $mesAtual   = date("m");
+    $diaAtual   = date("d");
+
+	//Calculo idade
+    $idade      = $anoAtual - $ano;
+    if ($mesAtual < $mes){
+        $idade -= 1;
+    } elseif ( ($mesAtual == $mes) && ($diaAtual <= $dia) ){
+        $idade -= 1;
+    }
 	$nomeCliente = $_POST["nomeCliente"];
-	$idade = $_POST["idade"];
 	$genero = $_POST["genero"];
 	$numero = $_POST["numero"];
 	$email = $_POST["email"];
@@ -32,7 +44,7 @@
 	$medicacao = $_POST["medicacao"];
 	$medicacaoDesc = $_POST["medicacaoDesc"];
 	$transpiracao = $_POST["transpiracao"];
-	$transpiraçãoDesc = $_POST["transpiraçãoDesc"];
+	$transpiracaoDesc = $_POST["transpiracaoDesc"];
 	$depilacao = $_POST["depilacao"];
 	$depilacaoDesc = $_POST["depilacaoDesc"];
 	$vitiligo = $_POST["vitiligo"];
@@ -40,42 +52,13 @@
 	$psoriase = $_POST["psoriase"];
 	$autorizacao = $_POST["autorizacao"];
 
-	$query = "INSERT INTO `clientes`(IdCliente,
-	`nomeCliente`, 
-	`dataNasc`, 
-	`idade`, 
-	`dataAlt`,
-	`genero`, 
-	`numero`, 
-	`email`, 
-	`profissao`, 
-	`fototipo`, 
-	`bronzeAntes`, 
-	`pele`, 
-	`respiratorio`,
-	`respiratorioDesc`, 
-	`hipertensao`, 
-	`degenerativa`, 
-	`alergia`, 
-	`alergiaDesc`, 
-	`ferimentoTatuagem`, 
-	`ferimentoTatuagemDesc`, 
-	`hematoma`, 
-	`hematomaDesc`, 
-	`medicacao`, 
-	`medicacaoDesc`, 
-	`transpiracao`, 
-	`transpiraçãoDesc`, 
-	`depilacao`, 
-	`depilacaoDesc`, 
-	`vitiligo`, 
-	`vitiligoDesc`, 
-	`psoriase`, 
-	`autorizacao`) VALUES (NULL,
+
+	$query = "INSERT INTO `clientes`(`idCliente`, `nomeCliente`, `dataNasc`, `idade`, `dataAlt`, `genero`, `numero`, `email`, `profissao`, `fototipo`, `bronzeAntes`, `pele`, `respiratorio`, `respiratorioDesc`, `hipertensao`, `degenerativa`, `alergia`, `alergiaDesc`, `ferimentoTatuagem`, `ferimentoTatuagemDesc`, `hematoma`, `hematomaDesc`, `medicacao`, `medicacaoDesc`, `transpiracao`, `transpiracaoDesc`, `depilacao`, `depilacaoDesc`, `vitiligo`, `vitiligoDesc`, `psoriase`, `autorizacao`) 
+	VALUES (NULL,
 	'$nomeCliente',
 	'$dataNasc',
 	'$idade',
-	'',
+	CURRENT_TIMESTAMP,
 	'$genero',
 	'$numero',
 	'$email',
@@ -96,13 +79,13 @@
 	'$medicacao',
 	'$medicacaoDesc',
 	'$transpiracao',
-	'$transpiraçãoDesc',
+	'$transpiracaoDesc',
 	'$depilacao',
 	'$depilacaoDesc',
 	'$vitiligo',
 	'$vitiligoDesc',
 	'$psoriase',
-	'$autorizacao'";
+	'$autorizacao')";
 
 	if($mysqli->query($query)){
 		echo "Registrou";

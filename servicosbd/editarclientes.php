@@ -1,29 +1,91 @@
 <?php
 	
 	include("../conexao/bd.php");
-	$id = $_POST['idaltera'];
-	$nome = $_POST["nome"];
-	$email = $_POST["email"];
-	$telefone_residencial = $_POST["telefone_residencial"];
-	$telefone_celular = $_POST["telefone_celular"];
-	$cpf = $_POST["cpf"];
-	$rg = $_POST["rg"];
-	$rua = $_POST["rua"];
-	$numero = $_POST["numero"];
-	$cidade = $_POST["cidade"];
-	$estado = $_POST["estado"];
-	$bairro = $_POST["bairro"];
-	$cep = $_POST["cep"];
-	$dt_nascimento = $_POST["dt_nascimento"];
-	$dt_nasc = explode("/", $dt_nascimento);
-	$ano = $dt_nasc[2];
-	$mes = $dt_nasc[1];
-	$dia = $dt_nasc[0];
-	$dt_nascimento = "$ano"."-"."$mes"."-"."$dia";
-	$status = $_POST["status"];
-	$dt_alt = date("Y-m-d");
+	$idCliente = $_POST['idCliente'];
+	$dataNasc0 = $_POST["dataNasc"];
+	//explode DataNasc
+	$dataNasc2 = explode("/", $dataNasc0);
+	$ano = $dataNasc2[2];
+	$mes = $dataNasc2[1];
+	$dia = $dataNasc2[0];
+	$dataNasc = "$ano"."-"."$mes"."-"."$dia";
 
-	$query = "update `clientes` set `nome` = '$nome',`email` = '$email',`telefone_res` = '$telefone_residencial',`telefone_cel` = '$telefone_celular',`cpf` = '$cpf',`rg` = '$rg',`rua` = '$rua',`numero` = '$numero',`bairro` = '$bairro',`cidade` = '$cidade',`estado` = '$estado',`cep` = '$cep',`data_nasc` = '$dt_nascimento',`status` = '$status',`data_alt` = '$dt_alt' where `id`='$id'";
+	//data atual
+	$anoAtual   = date("Y");
+    $mesAtual   = date("m");
+    $diaAtual   = date("d");
+
+	//Calculo idade
+    $idade      = $anoAtual - $ano;
+    if ($mesAtual < $mes){
+        $idade -= 1;
+    } elseif ( ($mesAtual == $mes) && ($diaAtual <= $dia) ){
+        $idade -= 1;
+    }
+
+	$nomeCliente = $_POST["nomeCliente"];
+	$genero = $_POST["genero"];
+	$numero = $_POST["numero"];
+	$email = $_POST["email"];
+	$profissao = $_POST["profissao"];
+	$fototipo = $_POST["fototipo"];
+	$bronzeAntes = $_POST["bronzeAntes"];
+	$pele = $_POST["pele"];
+	$respiratorio = $_POST["respiratorio"];
+	$respiratorioDesc = $_POST["respiratorioDesc"];
+	$hipertensao = $_POST["hipertensao"];
+	$degenerativa = $_POST["degenerativa"];
+	$alergia = $_POST["alergia"];
+	$alergiaDesc = $_POST["alergiaDesc"];
+	$ferimentoTatuagem = $_POST["ferimentoTatuagem"];
+	$ferimentoTatuagemDesc = $_POST["ferimentoTatuagemDesc"];
+	$hematoma = $_POST["hematoma"];
+	$hematomaDesc = $_POST["hematomaDesc"];
+	$medicacao = $_POST["medicacao"];
+	$medicacaoDesc = $_POST["medicacaoDesc"];
+	$transpiracao = $_POST["transpiracao"];
+	$transpiracaoDesc = $_POST["transpiracaoDesc"];
+	$depilacao = $_POST["depilacao"];
+	$depilacaoDesc = $_POST["depilacaoDesc"];
+	$vitiligo = $_POST["vitiligo"];
+	$vitiligoDesc = $_POST["vitiligoDesc"];
+	$psoriase = $_POST["psoriase"];
+	$autorizacao = $_POST["autorizacao"];
+
+	$query = "UPDATE `clientes` SET 
+	`nomeCliente` = '$nomeCliente',
+	`dataNasc` = '$dataNasc',
+	`idade` = '$idade',
+	`dataAlt` = CURRENT_TIMESTAMP,
+	`genero` = '$genero',
+	`numero` = '$numero',
+	`email` = '$email',
+	`profissao` = '$profissao',
+	`fototipo` = '$fototipo',
+	`bronzeAntes` = '$bronzeAntes',
+	`pele` = '$pele',
+	`respiratorio` = '$respiratorio',
+	`respiratorioDesc` = '$respiratorioDesc',
+	`hipertensao` = '$hipertensao',
+	`degenerativa` = '$degenerativa',
+	`alergia` = '$alergia',
+	`alergiaDesc` = '$alergiaDesc',
+	`ferimentoTatuagem` = '$ferimentoTatuagem',
+	`ferimentoTatuagemDesc` = '$ferimentoTatuagemDesc',
+	`hematoma` = '$hematoma',
+	`hematomaDesc` = '$hematomaDesc',
+	`medicacao` = '$medicacao',
+	`medicacaoDesc` = '$medicacaoDesc',
+	`transpiracao` = '$transpiracao',
+	`transpiracaoDesc` = '$transpiracaoDesc',
+	`depilacao` = '$depilacao',
+	`depilacaoDesc` = '$depilacaoDesc',
+	`vitiligo` = '$vitiligo',
+	`vitiligoDesc` = '$vitiligoDesc',
+	`psoriase` = '$psoriase',
+	`autorizacao` = '$autorizacao'
+	WHERE `idCliente`='$idCliente'";
+
 	if($mysqli->query($query)){
 		echo "Atualizou";
 		header ("location: ../clientes");
@@ -35,4 +97,3 @@
 
 		
 	}
-?>

@@ -2,35 +2,35 @@
 	<div class="col-md-10 titulo">Editar Agenda</div>
 	<?php
 
-	$id_altera = $atual[2];
+	$idAgendamento  = $atual[2];
 
 	//Recupera dados do banco
-	$query = "SELECT * FROM agenda where `idAgendamento` = '$id_altera'";
-	$result = $mysqli->query($query);
-	$row = $result->fetch_assoc();
+	$query1 = "SELECT * FROM agenda WHERE `idAgendamento` = '$idAgendamento'";
+	$result1 = $mysqli->query($query1);
+	$row1 = $result1->fetch_assoc();
 
-	$idServico = $row['servicos_idServico'];
-	$idAdicional = $row['adicionais_idAdicionais'];
+	$idServicoAtual = $row1['servicos_idServico'];
+	$idAdicionalAtual = $row1['adicionais_idAdicionais'];
 	//Recupera nome serviço
-	$query2 = "SELECT * FROM servicos where `idServico` = '$idServico'";
+	$query2 = "SELECT * FROM servicos WHERE `idServico` = '$idServicoAtual'";
 	$result2 = $mysqli->query($query2);
 	$row2 = $result2->fetch_assoc();
-	$nomeServico = $row2['nomeServico'];
+	$nomeServicoAtual = $row2['nomeServico'];
 
 	//Recupera nome adicional
-	$query3 = "SELECT * FROM adicionais where `idAdicional` = '$idAdicional'";
+	$query3 = "SELECT * FROM adicionais WHERE `idAdicional` = '$idAdicionalAtual'";
 	$result3 = $mysqli->query($query3);
 	$row3 = $result3->fetch_assoc();
-	$nomeAdicional = $row3['nomeAdicional'];
+	$nomeAdicionalAtual = $row3['nomeAdicional'];
 
-	$nome_cliente = $row['title'];
-	$id_cliente = $row['clientes_id'];
-	$start = $row['start'];
-	$end = $row['end'];
-	$status = $row['status'];
-	$observacao = $row['observacao'];
-	$valor = $row['valor'];
-	$forma_pagamento = $row['forma_pagamento'];
+	$idClienteAltera = $row1['clientes_id'];
+	$nomeCliente = $row1['title'];
+	$start = $row1['start'];
+	$end = $row1['end'];
+	$status = $row1['status'];
+	$observacao = $row1['observacao'];
+	$valor = $row1['valor'];
+	$forma_pagamento = $row1['forma_pagamento'];
 	$msg_forma_pagamento = "";
 	if ($forma_pagamento == "avista") {
 		$msg_forma_pagamento = "À vista";
@@ -59,9 +59,11 @@
 
 	//mesma coisa para data 2
 	$dt_fim = explode("-", $end);
+	//pega as pocicoes e colocam dentro de suas respectiveis variaveis
 	$ano2 = $dt_fim[0];
 	$mes2 = $dt_fim[1];
 	$dia2 = $dt_fim[2];
+	//eplodir o dia para separar as horas
 	$horario2 = explode(" ", $dia2);
 	$hr_fim = $horario2[1];
 	$novo_dia2 = $horario2[0];
@@ -70,25 +72,25 @@
 	?>
 
 	<form name="form1" action="<?php echo raiz ?>servicosbd/editaragenda.php" method="POST">
-		<input type="hidden" name="idaltera" value="<?php echo $id_altera; ?>">
-		<input type="hidden" name="nomeCliente" value="<?php echo $nome_cliente; ?>">
-		<input type="hidden" class="date data" required name="dt_fim" placeholder="__/__/____" value="<?php echo $end; ?>">
+		<input type="hidden" name="idClienteAltera" value="<?php echo $idClienteAltera; ?>">
+		<input type="hidden" name="$idAgendamento" value="<?php echo $idAgendamento; ?>">
+		<input type="hidden" name="valor" value="<?php echo $valor; ?>">
 		<div class="row">
 			<div class="col-md-6 item">
 				<div class="texto">Cliente:</div>
 				<select name="idCliente" required>
-					<option value="<?php echo $id_cliente; ?>"><?php echo $nome_cliente; ?></option>
+					<option value="<?php echo $idCliente; ?>"><?php echo $nomeCliente; ?></option>
 					<?php
-					$query = "SELECT `idCliente`,`nome` FROM `clientes` ORDER BY nome ASC";
-					$result = $mysqli->query($query);
-					$num_results = $result->num_rows;
-					if ($num_results > 0) {
-						while ($row = $result->fetch_assoc()) {
-							$id_cliente = $row['idCliente'];
-							$nome_cliente = $row['nome'];
-							if (!empty($nome_cliente)) {
+					$query4 = "SELECT `idCliente`,`nomeCliente` FROM `clientes` ORDER BY `nomeCliente` ASC";
+					$result4 = $mysqli->query($query4);
+					$num_results4 = $result4->num_rows;
+					if ($num_results4 > 0) {
+						while ($row4 = $result4->fetch_assoc()) {
+							$idCliente = $row4['idCliente'];
+							$nomeCliente = $row4['nomeCliente'];
+							if (!empty($nomeCliente)) {
 					?>
-								<option value="<?php echo $id_cliente; ?>"><?php echo $nome_cliente; ?></option>
+								<option value="<?php echo $idCliente; ?>"><?php echo $nomeCliente; ?></option>
 					<?php
 							}
 						}
@@ -98,34 +100,33 @@
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Data:</div>
-				<input type="text" class="date" required name="start" placeholder="__/__/____" value="<?php echo $start; ?>">
+				<input type="text" class="date" required name="start" placeholder="<?php echo $start; ?>">
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Hora In&iacute;cio:</div>
-				<input type="text" class="hora" required name="hr_inicio" placeholder="__:__" value="<?php echo $hr_inicio; ?>">
+				<input type="text" class="hora" required name="hr_inicio" placeholder="<?php echo $hr_inicio; ?>">
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Hora Fim:</div>
-				<input type="text" class="hora" required name="hr_fim" placeholder="__:__" value="<?php echo $hr_fim; ?>">
+				<input type="text" class="hora" required name="hr_fim" placeholder="<?php echo $hr_fim; ?>">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-2">
 				<div class="texto">Atendimento</div>
 				<select name="servico" required>
-					<option value="<?php echo $idServico; ?>"><?php echo $nomeServico; ?></option>
+					<option value="<?php echo $idServicoAtual; ?>"><?php echo $nomeServicoAtual; ?></option>
 					<?php
-					$query = "SELECT * FROM `servicos` ORDER BY `nomeServico` ASC";
-					$result = $mysqli->query($query);
-					$num_results = $result->num_rows;
+					$query5 = "SELECT * FROM `servicos` ORDER BY `nomeservico` ASC";
+					$result5 = $mysqli->query($query5);
+					$num_results = $result5->num_rows;
 					if ($num_results > 0) {
-						while ($row = $result->fetch_assoc()) {
-							$id_servico = $row['idServico'];
-							$nome_servico = $row['nomeServico'];
-							if (!empty($nome_servico)) {
+						while ($row5 = $result5->fetch_assoc()) {
+							$idServico = $row5['idServico'];
+							$nomeServico = $row5['nomeServico'];
+							if (!empty($nomeCliente)) {
 					?>
-								<option value="<?php echo $id_servico; ?>"><?php echo $nome_servico; ?></option>
-
+								<option value="<?php echo $idServico; ?>"><?php echo $nomeServico; ?></option>
 					<?php
 							}
 						}
@@ -136,27 +137,25 @@
 			<div class="col-md-2">
 				<div class="texto">Adicional</div>
 				<select name="adicional" required>
-					<option value="<?php echo $idAdicional; ?>"><?php echo $nomeAdicional; ?></option>
+					<option value="<?php echo $idAdicionalAtual; ?>"><?php echo $nomeAdicionalAtual; ?></option>
 					<?php
-					$query = "SELECT * FROM `adicionais` ORDER BY `nomeAdicional` ASC";
-					$result = $mysqli->query($query);
-					$num_results = $result->num_rows;
+					$query6 = "SELECT * FROM `adicionais` ORDER BY `nomeAdicional` ASC";
+					$result6 = $mysqli->query($query6);
+					$num_results = $result6->num_rows;
 					if ($num_results > 0) {
-						while ($row = $result->fetch_assoc()) {
-							$id_adicional = $row['idAdicional'];
-							$nome_adicional = $row['nomeAdicional'];
-							if (!empty($nome_cliente)) {
+						while ($row6 = $result6->fetch_assoc()) {
+							$idAdicional = $row6['idAdicional'];
+							$nomeAdicional = $row6['nomeAdicional'];
+							if (!empty($nomeCliente)) {
 					?>
-								<option value="<?php echo $id_adicional; ?>"><?php echo $nome_adicional; ?></option>
+								<option value="<?php echo $idAdicional; ?>"><?php echo $nomeAdicional; ?></option>
 					<?php
 							}
 						}
 					}
 					?>
 				</select>
-				<?php if (!empty($id_adicional)) { ?>
-					<input type="hidden" name="id_adicional" value="<?php echo $id_adicional; ?>">
-				<?php } ?>
+
 			</div>
 			<div class="col-md-2">
 				<div class="texto">Obs.:</div>
@@ -182,9 +181,10 @@
 			<button type="submit" class="botao_adicionar">Salvar</i></button>
 		</div>
 	</form>
-	<form action="<?php echo raiz ?>servicosbd/deletaragenda.php?valorid=<?php echo $id_altera; ?>" onClick="return confirm('Tem certeza que deseja deletar?')" method="POST">
-		<div class="col-md-12" style="margin-top: 20px; text-align: center">
-			<button type="submit" class="botao_deletar">Deletar</i></button>
+	<form action="<?php echo raiz ?>servicosbd/deletaragenda.php?valorid=<?php echo $idAgendamento; ?>" onClick="return confirm('Tem certeza que deseja deletar?')" method="POST">
+
+		<div style="margin-top: 20px; text-align: center">
+			<button type="submit" class="btn btn-danger">Deletar</i></button>
 		</div>
 	</form>
 </div>

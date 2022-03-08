@@ -14,26 +14,41 @@
 				<div class="texto">Email:</div>
 				<input type="text" name="email" placeholder="email@host.com">
 			</div>
-			<div class="col-md-6 item">
+			<div class="col-md-3 item">
 				<div class="texto">Data de Nascimento:</div>
 				<input type="text" class="date data" name="dataNasc" placeholder="__/__/____">
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-3 item">
+				<div class="texto">Gênero:</div>
+				<select class="genero" name="genero">
+					<option selected value="">Selecione o gênero</option>
+					<option value="F">Feminino</option>
+					<option value="M">Masulino</option>
+					<option value="O">Outros</option>
+				</select>
 			</div>
+
 			<div class="col-md-10 titulo">Dados Ficha de Anamnese (apenas para bronze na máquina)</div>
 			<div id="adicionar">
 				<div class="col-md-3 item">
-					<div class="texto">Gênero:</div>
-					<select class="genero" name="genero">
-						<option selected value="">Selecione o gênero</option>
-						<option value="F">Feminino</option>
-						<option value="M">Masulino</option>
-						<option value="O">Outros</option>
-					</select>
-				</div>
-				<div class="col-md-3 item">
 					<div class="texto">Profissão:</div>
 					<input type="text" class="profissao" name="profissao" placeholder="Atua em qual área">
+				</div>
+				<div class="col-md-3 item">
+					<div class="texto">Já fez esse tipo de bronzeamento antes:</div>
+					<select class="bronzeantes" name="bronzeAntes">
+						<option selected value="">Escolha a opção</option>
+						<option value="1">Sim</option>
+						<option value="0">Não</option>
+					</select>
+				</div>
+				<div class="col-md-3 item" style="text-align: center">
+					<div class="texto">Autoriza postar fotos em redes sociais:</div>
+					<select class="autorizacao" name="autorizacao">
+						<option selected value="">Escolha a opção</option>
+						<option value="1">Sim</option>
+						<option value="0">Não</option>
+					</select>
 				</div>
 				<div class="col-md-3 item">
 					<div class="texto">Fototipo:</div>
@@ -57,14 +72,7 @@
 						<option value="Mista">Mista</option>
 					</select>
 				</div>
-				<div class="col-md-3 item">
-					<div class="texto">Já fes esse tipo de bronzeamento antes:</div>
-					<select class="bronzeantes" name="bronzeAntes">
-						<option selected value="">Escolha a opção</option>
-						<option value="1">Sim</option>
-						<option value="0">Não</option>
-					</select>
-				</div>
+
 				<div class="col-md-3 item">
 					<div class="texto">Problemas de hipertensão:</div>
 					<select class="hipertensao" name="hipertensao">
@@ -186,6 +194,7 @@
 					<div class="texto">Quantas semanas:</div>
 					<input type="number" class="depilacaoDesc" name="depilacaoDesc" placeholder="Número">
 				</div>
+
 
 				<!-- Botão de envio -->
 				<div class="col-md-12" style="margin-top: 20px; text-align: center">
