@@ -23,16 +23,16 @@
         </tr>
 
         <?php
-        $query = "select * from servicos order by nomeServico asc";
-        $result = $mysqli->query($query);
+        $query2 = "SELECT * FROM servicos ORDER BY nomeServico ASC";
+        $result2 = $mysqli->query($query2);
 
         //mostrar o numero de linhas retornadas
-        $num_results = $result->num_rows;
-        if ($num_results > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $id = $row['idServico'];
-                $nome = $row['nomeServico'];
-                $valor = $row['valorServico'];
+        $num_results2 = $result2->num_rows;
+        if ($num_results2 > 0) {
+            while ($row2 = $result2->fetch_assoc()) {
+                $id = $row2['idServico'];
+                $nome = $row2['nomeServico'];
+                $valor = $row2['valorServico'];
         ?>
                 <tr class="dados">
                     <td><?php echo $nome; ?></td>
@@ -49,7 +49,7 @@
         <?php
             }
         }
-        $result->free();
+        $result2->free();
         ?>
     </table>
 </div>

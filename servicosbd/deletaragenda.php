@@ -3,10 +3,10 @@
 	include("../conexao/bd.php");
 	$id = $_GET['valorid'];
 	
-	$query = "delete from `agenda` where `id`='$id'";
+	$query =  "DELETE FROM `agenda` WHERE`idAgendamento` = '$id' ";
 
 	if($mysqli->query($query)){
-		echo "Atualizou";
+		echo "Deletou";
 	}else{
 		echo "Erro";
 	}

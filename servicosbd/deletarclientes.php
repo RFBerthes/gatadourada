@@ -3,7 +3,7 @@
 	include("../conexao/bd.php");
 	$idCliente = $_GET['valorid'];
 	
-	$query = "delete from `clientes` where `idCliente`='$idCliente'";
+	$query = "DELETE FROM `clientes` WHERE `idCliente`='$idCliente'";
 
 	if($mysqli->query($query)){
 		echo "Deletou";

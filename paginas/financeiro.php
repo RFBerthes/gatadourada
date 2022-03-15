@@ -59,19 +59,18 @@
 				$data_fim = "$dia2"."-"."$mes2"."-"."$ano2"." "."23:59:59";
 				
 				$condicao_data = "and `start` >= '$data_inicio' and `end` <= '$data_fim'";
-				$query = "select * from agenda where 1=1 $condicao_data";	
-				$result = $mysqli->query($query);
+				$query0 = "SELECT * FROM agenda WHERE 1=1 $condicao_data";	
+				$result = $mysqli->query($query0);
 
 			}else{
-				$query = "select * from agenda order by forma_pagamento asc";
+				$query1 = "SELECT * FROM agenda ORDER BY forma_pagamento ASC";
 				//executar a query
-				$result = $mysqli->query($query);
+				$result = $mysqli->query($query1);
 			}
 
 			//mostrar o numero de linhas retornadas
 			$num_results = $result->num_rows;
 			if($num_results > 0){
-
 
 			while ($row = $result->fetch_assoc()) {
 				
@@ -106,7 +105,6 @@
 		}
 
 		$result->free();
-		$mysqli->close();
 	}
 
 	?>
@@ -123,7 +121,7 @@
 			<td><strong>R$ <?php echo $total_debito = number_format($total_debito, 2, ',', ' '); ?></strong></td>
 		</tr>
 		<tr class="titulo">
-			<td>Total Dinheiro</td>		
+			<td>Total Dinheiro/PIX</td>		
 							
 			<td><strong>R$ <?php echo $total_avista = number_format($total_avista, 2, ',', ' '); ?></strong></td>
 		</tr>

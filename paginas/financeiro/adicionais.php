@@ -23,16 +23,16 @@
         </tr>
 
         <?php
-        $query = "select * from adicionais order by nomeAdicional asc";
-        $result = $mysqli->query($query);
+        $query3 = "select * from adicionais order by nomeAdicional asc";
+        $result3 = $mysqli->query($query3);
 
         //mostrar o numero de linhas retornadas
-        $num_results = $result->num_rows;
-        if ($num_results > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $id = $row['idAdicional'];
-                $nome = $row['nomeAdicional'];
-                $valor = $row['valorAdicional'];
+        $num_results3 = $result3->num_rows;
+        if ($num_results3 > 0) {
+            while ($row3 = $result3->fetch_assoc()) {
+                $id = $row3['idAdicional'];
+                $nome = $row3['nomeAdicional'];
+                $valor = $row3['valorAdicional'];
         ?>
                 <tr class="dados">
                     <td><?php echo $nome; ?></td>
@@ -49,7 +49,7 @@
         <?php
             }
         }
-        $result->free();
+        $result3->free();
         $mysqli->close();
         ?>
     </table>

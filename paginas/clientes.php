@@ -67,7 +67,7 @@
 				<a href="clientes/editar/<?php echo $id; ?>">
 				  	<i class="fa fa-pencil-square-o"></i>	
 				</a>
-				<a href="<?php raiz ?>servicosbd/deletarclientes.php?valorid=<?php echo $id; ?>"onClick="return confirm('Tem certeza que deseja deletar?')">
+				<a href="<?php raiz ?>servicosbd/deletarclientes.php?valorid=<?php echo $id; ?>" onClick="return confirm('Tem certeza que deseja deletar?')">
 				 	<i class="fa fa-times"></i>
 				</a>
 			</td>
