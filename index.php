@@ -94,8 +94,6 @@ define("raiz", "/gatadourada/");
 		}); //]]>  
 	</script>
 
-
-
 	<script src="<?php echo raiz ?>bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo raiz ?>bootstrap/js/bootstrap.js"></script>
 
