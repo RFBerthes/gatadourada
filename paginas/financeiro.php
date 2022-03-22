@@ -1,3 +1,6 @@
+<?php
+	include('servicosbd/verifica_login.php');
+?>
 <div class="col-md-12">
 	<div class="col-md-10 titulo">Saldo</div>
 </div>
