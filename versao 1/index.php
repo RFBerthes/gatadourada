@@ -50,7 +50,7 @@ include("db/conexao.php");
         <div class="container">
             <?php
             //Menu do cabeçalho
-            $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "hoome";
+            $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "home";
             switch ($menuop) {
                 case 'home':
                     include("paginas/home/home.php");
